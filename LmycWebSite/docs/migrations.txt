@@ -1,0 +1,1 @@
+﻿Enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Migrations\IdentityMigrations
