@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LmycWebSite.Models
+namespace LmycDataLib.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -49,9 +49,8 @@ namespace LmycWebSite.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +63,10 @@ namespace LmycWebSite.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +82,43 @@ namespace LmycWebSite.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Address Street")]
+        public string AddressStreet { get; set; }
+
+        [Required]
+        [Display(Name = "Address City")]
+        public string AddressCity { get; set; }
+
+        [Required]
+        [Display(Name = "Address Province")]
+        public string AddressProvince { get; set; }
+
+        [Required]
+        [Display(Name = "Address Postal Code")]
+        public string AddressPostalCode { get; set; }
+
+        [Required]
+        [Display(Name = "Address Country")]
+        public string AddressCountry { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Mobile Number")]
+        public string MobileNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Sailing Experience")]
+        public string SailingExperience { get; set; }
     }
 
     public class ResetPasswordViewModel
