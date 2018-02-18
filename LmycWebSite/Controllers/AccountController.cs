@@ -151,7 +151,9 @@ namespace LmycWebSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,
+                    AddressStreet = model.AddressStreet, AddressCity = model.AddressCity, AddressProvince = model.AddressProvince, AddressPostalCode = model.AddressPostalCode,
+                    AddressCountry = model.AddressCountry, MobileNumber = model.MobileNumber, SailingExperience = model.SailingExperience};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
