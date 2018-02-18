@@ -195,9 +195,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\IdentityMigrations\201802180044052_InitialCreate.cs" />
-    <Compile Include="Migrations\IdentityMigrations\201802180044052_InitialCreate.Designer.cs">
-      <DependentUpon>201802180044052_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\IdentityMigrations\201802180711446_InitialIdentity.cs" />
+    <Compile Include="Migrations\IdentityMigrations\201802180711446_InitialIdentity.Designer.cs">
+      <DependentUpon>201802180711446_InitialIdentity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\IdentityMigrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -266,7 +266,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -287,8 +286,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\IdentityMigrations\201802180044052_InitialCreate.resx">
-      <DependentUpon>201802180044052_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\IdentityMigrations\201802180711446_InitialIdentity.resx">
+      <DependentUpon>201802180711446_InitialIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

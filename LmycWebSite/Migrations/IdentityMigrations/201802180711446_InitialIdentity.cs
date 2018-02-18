@@ -3,7 +3,7 @@ namespace LmycWebSite.Migrations.IdentityMigrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class InitialIdentity : DbMigration
     {
         public override void Up()
         {
@@ -35,6 +35,15 @@ namespace LmycWebSite.Migrations.IdentityMigrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        AddressStreet = c.String(),
+                        AddressCity = c.String(),
+                        AddressProvince = c.String(),
+                        AddressPostalCode = c.String(),
+                        AddressCountry = c.String(),
+                        MobileNumber = c.String(),
+                        SailingExperience = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

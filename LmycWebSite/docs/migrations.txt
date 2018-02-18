@@ -1,1 +1,5 @@
-﻿Enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Migrations\IdentityMigrations
+﻿Enable-Migrations -ContextTypeName LmycDataLib.Models.ApplicationDbContext -MigrationsDirectory Migrations\IdentityMigrations
+
+add-migration -ConfigurationTypeName LmycWebSite.Migrations.IdentityMigrations.Configuration "InitialIdentity"
+
+update-database -ConfigurationTypeName LmycWebSite.Migrations.IdentityMigrations.Configuration
