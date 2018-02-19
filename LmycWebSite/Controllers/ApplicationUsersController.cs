@@ -87,8 +87,6 @@ namespace LmycWebSite.Controllers
 
             if (ModelState.IsValid)
             {
-                var 
-
                 db.Entry(applicationUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -113,9 +111,7 @@ namespace LmycWebSite.Controllers
 
             var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
-            var userRoles = userManager.GetRoles(id);
-
-            ViewBag.UserRoles = userRoles;
+            var roles = userManager.GetRoles(id);
 
             return View(applicationUser);
         }
