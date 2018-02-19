@@ -1,0 +1,105 @@
+﻿@model LmycDataLib.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ApplicationUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressStreet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressStreet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressProvince)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressProvince)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressPostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressPostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MobileNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SailingExperience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SailingExperience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

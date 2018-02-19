@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LmycDataLib.Models;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LmycWebSite.Controllers
 {
@@ -17,6 +19,7 @@ namespace LmycWebSite.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -154,9 +157,15 @@ namespace LmycWebSite.Controllers
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName,
                     AddressStreet = model.AddressStreet, AddressCity = model.AddressCity, AddressProvince = model.AddressProvince, AddressPostalCode = model.AddressPostalCode,
                     AddressCountry = model.AddressCountry, MobileNumber = model.MobileNumber, SailingExperience = model.SailingExperience};
+
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+                    var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                    userManager.AddToRole(userManager.FindByEmail(user.Email).Id, "Member");
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
