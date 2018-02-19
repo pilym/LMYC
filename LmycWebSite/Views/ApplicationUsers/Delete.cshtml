@@ -6,106 +6,131 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete the account for @Html.DisplayFor(model => model.UserName)?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
+@{
+    if (Model.UserName.Equals("a"))
+    {
+        <div class="text-danger">The admin account is protected and cannot be deleted.</div>
+        @Html.ActionLink("Back to List", "Index")
+    }
+    else
+    {
+        <h3>Are you sure you want to delete the account for @Html.DisplayFor(model => model.UserName)?</h3>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    User Name
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.UserName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+                <dt>
+                    Roles
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+                <dd>
+                    @{
+                        foreach (var role in ViewBag.UserRoles)
+                        {
+                            @role
+                            <br>
+                        }
+                    }
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressStreet)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AddressStreet)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressCity)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressStreet)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AddressCity)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.AddressStreet)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressProvince)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressCity)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AddressProvince)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.AddressCity)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressPostalCode)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressProvince)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AddressPostalCode)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.AddressProvince)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AddressCountry)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressPostalCode)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AddressCountry)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.AddressPostalCode)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MobileNumber)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AddressCountry)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MobileNumber)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.AddressCountry)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SailingExperience)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MobileNumber)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SailingExperience)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.MobileNumber)
+                </dd>
 
-    </dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SailingExperience)
+                </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                <dd>
+                    @Html.DisplayFor(model => model.SailingExperience)
+                </dd>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
         </div>
     }
-</div>
+}

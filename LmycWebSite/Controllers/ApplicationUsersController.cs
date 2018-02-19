@@ -22,8 +22,6 @@ namespace LmycWebSite.Controllers
         // GET: ApplicationUsers
         public ActionResult Index()
         {
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-
             var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
             var usersList = db.Users.ToList();
@@ -56,12 +54,20 @@ namespace LmycWebSite.Controllers
             {
                 return HttpNotFound();
             }
+            var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            ViewBag.UserRoles = userManager.GetRoles(id);
+
             return View(applicationUser);
         }
 
         // GET: ApplicationUsers/Edit/5
         public ActionResult Edit(string id)
         {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+
+            var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,11 +113,9 @@ namespace LmycWebSite.Controllers
                 return HttpNotFound();
             }
 
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-
             var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
-            var roles = userManager.GetRoles(id);
+            ViewBag.UserRoles = userManager.GetRoles(id);
 
             return View(applicationUser);
         }
@@ -122,9 +126,16 @@ namespace LmycWebSite.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             ApplicationUser applicationUser = db.Users.Find(id);
-            db.Users.Remove(applicationUser);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (applicationUser.UserName.Equals("a"))
+            {
+                return View(applicationUser);
+            }
+            else
+            {
+                db.Users.Remove(applicationUser);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

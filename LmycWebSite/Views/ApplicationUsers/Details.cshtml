@@ -11,11 +11,33 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.UserName)
+            User Name
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Roles
+        </dt>
+
+        <dd>
+            @{
+                foreach (var role in ViewBag.UserRoles)
+                {
+                    @role
+                    <br>
+                }
+            }
         </dd>
 
         <dt>
@@ -88,14 +110,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.SailingExperience)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
         </dd>
     </dl>
 </div>
